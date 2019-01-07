@@ -10,13 +10,13 @@ public class Converter {
     private Double normalizeToCelsius(Double magnitude, String unit) {
         switch (unit) {
             case "F":
-                return (double) Math.round((magnitude - 32) * 5 / 9);
+                return (magnitude - 32) * 5 / 9;
             case "C":
-                return (double) Math.round(magnitude);
+                return magnitude;
             case "K":
-                return  (double) Math.round((magnitude - 273.15));
+                return  magnitude - 273.15;
             case "R":
-                return (double) Math.round((magnitude - 491.67) * 5 / 9);
+                return (magnitude - 491.67) * 5 / 9;
             default:
                 return null;
         }

@@ -21,9 +21,9 @@ public class Program {
     }
 
     private static void showResult() {
-        String formatString = "%-4s | %s\n";
+        String formatString = "%-4s | %.2f\n";
         System.out.println();
-        System.out.printf(formatString, "Unit", "Magnitude");
+        System.out.println("Unit | Magnitude");
         System.out.printf(formatString, "F", converter.toFahrenheit());
         System.out.printf(formatString, "C", converter.toCelsius());
         System.out.printf(formatString, "K", converter.toKelvin());
