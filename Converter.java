@@ -1,68 +1,40 @@
 public class Converter {
     Double magnitude;
-    String unit;
+//    String unit;
 
     public Converter(Double magnitude, String unit) {
-        this.magnitude = magnitude;
-        this.unit = unit;
+        this.magnitude = normalizeToCelsius(magnitude, unit);
+//        this.unit = unit;
+    }
+
+    private Double normalizeToCelsius(Double magnitude, String unit) {
+        switch (unit) {
+            case "F":
+                return (magnitude - 32) * 5 / 9;
+            case "C":
+                return magnitude;
+            case "K":
+                return (magnitude + 273.15);
+            case "R":
+                return (magnitude - 491.67) * 5 / 9;
+            default:
+                return null;
+        }
     }
 
     public Double toFahrenheit() {
-        if (unit.equals("F")) {
-            return magnitude;
-        } else if (unit.equals("C")) {
-            return magnitude * 9 / 5 + 32;
-        } else if (unit.equals("K")) {
-            return magnitude - 32 * 5 / 9 + 273.15;
-        } else if (unit.equals("R")) {
-            return magnitude - 459.67;
-
-        } else {
-            return null;
-        }
+        return magnitude * 9 / 5 + 32;
     }
 
     public Double toCelsius() {
-        if (unit.equals("F")) {
-            return (magnitude - 32) * 5 / 9;
-        } else if (unit.equals("C")) {
-            return magnitude;
-        } else if (unit.equals("K")) {
-            return (magnitude + 273.15);
-        } else if (unit.equals("R")) {
-            return (magnitude - 491.67) * 5 / 9;
-        }
-
-        else {
-            return null;
-        }
+        return magnitude;
     }
 
     public Double toKelvin() {
-        if (unit.equals("F")) {
-            return (magnitude + 459.67) * 5 / 9;
-        } else if (unit.equals("C")) {
-            return magnitude + 273.15;
-        } else if (unit.equals("K")) {
-            return magnitude;
-        } else if (unit.equals("R")) {
-            return magnitude * 5 / 9;
-        } else {
-            return null;
-        }
+        return magnitude + 273.15;
     }
 
     public Double toRankine() {
-        if (unit.equals("F")) {
-            return (magnitude + 459.67);
-        } else if (unit.equals("C")) {
-            return (magnitude + 273.15) * 9 / 5;
-        } else if (unit.equals("K")) {
-            return magnitude * 9 / 5;
-        } else if (unit.equals("R")) {
-            return magnitude;
-        } else {
-            return null;
-        }
+        return (magnitude + 273.15) * 9 / 5;
     }
 }
